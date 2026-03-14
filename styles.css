@@ -2,7 +2,7 @@
    Global & Root Variables
 ======================== */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Ensures padding and border are included in total element size */
 }
 
 :root {
@@ -10,11 +10,8 @@
   --secondary-color: #f4f7fd;
   --primary-font-color: #000000;
   --secondary-font-color: #828fa3;
-  --accent-color: #635fc7;
-  --accent-hover: #a8a4ff;
-  --primary-box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.1015);
-  --sidebar-width: 300px;
-  --modal-radius: 6px;
+  --primary-box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.1015); /* Subtle shadow for card depth */
+  --sidebar-width: 300px; /* Sidebar fixed width */
 }
 
 /* ================
@@ -22,38 +19,35 @@
 ================ */
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
-  display: flex;
+  display: flex; /* Allow layout to span horizontally */
   flex-direction: row;
   width: 100%;
   min-height: 100vh;
   margin: 0;
   background-color: var(--secondary-color);
-  font-size: 1rem;
+  font-size: 1rem; /* Base font size for rem scaling */
 }
 
 /* ================
-   Sidebar
+   Sidebar Layout
 ================ */
 .side-bar {
   display: flex;
   flex-direction: column;
   background-color: var(--primary-color);
-  border-right: 1px solid #e4ebfa;
+  border-right: 1px solid #e4ebfa; /* Light divider */
   width: var(--sidebar-width);
-  min-width: var(--sidebar-width);
   height: 100vh;
-  position: sticky;
-  top: 0;
 }
 
 #side-logo-div {
-  margin: 33px 113px 54px 34px;
+  margin: 33px 113px 54px 34px; /* Spacing around logo */
   display: flex;
   justify-content: flex-start;
 }
 
 #logo {
-  width: 100%;
+  width: 100%; /* Make logo responsive within container */
 }
 
 .boards-nav-links-div {
@@ -63,43 +57,44 @@ body {
 }
 
 #headline-sidepanel {
-  padding: 0 12px 0 50px;
+  padding: 0 12px 0 50px; /* Aligns section content from left and right */
 }
 
 h4 {
   color: var(--secondary-font-color);
   font-size: 0.75rem;
-  letter-spacing: 0.125rem;
+  letter-spacing: 0.125rem; /* Makes heading more spaced */
 }
 
 .board-btn {
   font-family: inherit;
   display: flex;
   align-items: center;
-  gap: 10px;
-  background-color: var(--accent-color);
+  gap: 10px; /* Space between icon and text */
+  background-color: #635fc7;
   color: #fff;
   border: none;
-  border-radius: 0 100px 100px 0;
+  border-radius: 0 100px 100px 0; /* Pill shape only on right side */
   height: 48px;
   width: 276px;
   padding: 28px 12px 28px 50px;
   font-size: 0.9375rem;
   font-weight: bold;
   cursor: pointer;
+  overflow: hidden; /* Prevents overflowed text/icons from showing */
 }
 
 /* ===============
    Main Layout
 ================ */
 #layout {
-  flex: 1;
-  overflow-x: auto;
+  flex: 1; /* Fills remaining space beside sidebar */
+  overflow-x: hidden; /* Prevent horizontal scroll */
   width: 100%;
 }
 
 /* ===============
-   Header
+   Header Section
 ================ */
 header {
   display: flex;
@@ -113,9 +108,6 @@ header {
   width: 100%;
   font-size: 1.875rem;
   font-weight: 600;
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
 
 .header-name-div {
@@ -124,12 +116,7 @@ header {
 }
 
 .logo-mobile {
-  display: none;
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin: 0;
+  display: none; /* Hidden on desktop; shown on smaller screens */
 }
 
 /* ===============
@@ -138,14 +125,17 @@ h2 {
 .container {
   display: flex;
   flex-direction: column;
-  padding: 24px 35px;
+  padding-left: 35px;
   box-sizing: border-box;
 }
 
 .card-column-main {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 304px));
-  gap: 8px;
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 304px)
+  ); /* 3 columns with min size */
+  gap: 8px; /* Space between columns */
 }
 
 .column-div {
@@ -159,7 +149,7 @@ h2 {
 .column-head-div {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 10px; /* Space between dot and column title */
 }
 
 .columnHeader {
@@ -173,14 +163,21 @@ h2 {
 .dot {
   height: 15px;
   width: 15px;
-  border-radius: 50%;
+  border-radius: 50%; /* Make it circular */
   display: inline-block;
-  flex-shrink: 0;
 }
 
-#todo-dot   { background-color: #49c4e5; }
-#doing-dot  { background-color: #8471f2; }
-#done-dot   { background-color: #219c90; }
+#todo-dot {
+  background-color: #49c4e5;
+}
+
+#doing-dot {
+  background-color: #8471f2;
+}
+
+#done-dot {
+  background-color: #219c90;
+}
 
 /* ===============
    Task Cards
@@ -193,153 +190,41 @@ h2 {
 .task-div {
   display: flex;
   align-items: center;
-  padding: 0 15px;
+  padding-left: 15px;
   width: 100%;
-  min-height: 60px;
+  height: 60px;
   background-color: var(--primary-color);
   color: var(--primary-font-color);
   border-radius: 12px;
   box-shadow: var(--primary-box-shadow);
-  cursor: pointer;
+  cursor: pointer; /* Indicate it's clickable */
   margin-bottom: 20px;
   font-size: 0.9375rem;
   font-weight: bold;
-  transition: background-color 0.15s ease;
 }
 
-.task-div:hover {
-  background-color: #e9effa;
-}
-
-/* ========================
-   Modal Backdrop
-======================== */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  padding: 16px;
-}
-
-.modal-backdrop[hidden] {
-  display: none;
-}
-
-/* ========================
-   Modal
-======================== */
-.modal {
-  background-color: var(--primary-color);
-  border-radius: 6px;
-  padding: 32px;
-  width: 100%;
-  max-width: 480px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  box-shadow: 0 10px 40px rgba(54, 78, 126, 0.25);
-}
-
-.modal-section-label {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--primary-font-color);
+/* ===============
+   Headings
+================ */
+h2 {
+  font-size: 1.5rem;
   margin: 0;
 }
 
-.modal-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.modal-field label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--secondary-font-color);
-  letter-spacing: 0.04em;
-}
-
-.modal-field input,
-.modal-field textarea,
-.modal-field select {
-  font-family: inherit;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--primary-font-color);
-  background-color: transparent;
-  border: 1px solid rgba(130, 143, 163, 0.25);
-  border-radius: var(--modal-radius);
-  padding: 8px 16px;
-  outline: none;
-  resize: none;
-  transition: border-color 0.15s ease;
-  width: 100%;
-}
-
-.modal-field input:focus,
-.modal-field textarea:focus,
-.modal-field select:focus {
-  border-color: var(--accent-color);
-}
-
 /* ========================
-   Modal Action Buttons
+   Responsive Styles
 ======================== */
-.modal-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
 
-.btn-save,
-.btn-close {
-  font-family: inherit;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 20px;
-  height: 40px;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.15s ease;
-}
-
-.btn-save {
-  background-color: var(--accent-color);
-  color: #fff;
-}
-
-.btn-save:hover {
-  background-color: var(--accent-hover);
-}
-
-.btn-close {
-  background-color: rgba(99, 95, 199, 0.1);
-  color: var(--accent-color);
-}
-
-.btn-close:hover {
-  background-color: rgba(99, 95, 199, 0.2);
-}
-
-/* ========================
-   Responsive — Tablet
-======================== */
+/******** Tablets ********/
 @media screen and (max-width: 1023px) {
   .side-bar {
-    display: none;
+    display: none; /* Hide sidebar on tablets and smaller */
   }
 
   .side-bar.show-sidebar {
-    display: flex;
-    position: fixed;
+    display: flex !important;
+    position: fixed; /* Overlay on top of page */
     height: auto;
-    z-index: 50;
   }
 
   #side-logo-div {
@@ -365,9 +250,9 @@ h2 {
   }
 
   .container {
-    padding: 16px;
+    padding: 0;
     width: 100%;
-    align-items: center;
+    align-items: center; /* Center columns on smaller screens */
   }
 
   .card-column-main {
@@ -389,6 +274,10 @@ h2 {
     width: 100%;
   }
 
+  .columnHeader {
+    font-size: 0.75rem;
+  }
+
   .dot {
     height: 8px;
     width: 8px;
@@ -403,19 +292,16 @@ h2 {
   }
 }
 
-/* ========================
-   Responsive — Mobile
-======================== */
+/******** Mobile ********/
 @media screen and (max-width: 576px) {
   .card-column-main {
-    grid-template-columns: minmax(0, 380px);
+    grid-template-columns: minmax(
+      0,
+      380px
+    ); /* Stack columns in single column */
   }
 
   .column-div {
     padding: 24px;
-  }
-
-  .modal {
-    padding: 24px 20px;
   }
 }
