@@ -1,29 +1,29 @@
-const initialTasks = [
+
+const initialData = [
   {
     id: 1,
     title: "Launch Epic Career 🚀",
     description: "Create a killer Resume",
-    status: "todo",
+    status: "to-do",
   },
   {
     id: 2,
     title: "Master JavaScript 💛",
     description: "Get comfortable with the fundamentals",
-    status: "doing",
+    status: "in-progress",
   },
   {
     id: 3,
     title: "Keep on Going 🏆",
     description: "You're almost there",
-    status: "doing",
+    status: "in-progress",
   },
-
   {
     id: 11,
     title: "Learn Data Structures and Algorithms 📚",
     description:
       "Study fundamental data structures and algorithms to solve coding problems efficiently",
-    status: "todo",
+    status: "to-do",
   },
   {
     id: 12,
