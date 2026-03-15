@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,13 +8,15 @@
     />
 
     <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./scripts.js"></script>
+
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./assets/favicon.svg"
     />
-    <script defer src="./scripts.js"></script>
+
     <title>Kanban Task Management</title>
   </head>
 
@@ -49,13 +50,13 @@
 
       <div class="container">
         <main class="card-column-main">
-          <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
-          <div class="column-div" data-status="todo">
+          <!-- Task Columns: Display tasks grouped by status (To Do, In Progress, Done). -->
+          <div class="column-div" data-status="to-do">
             <div id="todo-head-div" class="column-head-div">
               <span class="dot" id="todo-dot"></span>
-              <h4 id="toDoText" class="columnHeader">TODO (4)</h4>
+              <h4 id="toDoText" class="columnHeader">To Do (4)</h4>
             </div>
-            <!-- Tasks container for TODO -->
+            <!-- Tasks container for To Do -->
             <div class="tasks-container">
               <div class="task-div">Launch Epic Career 🚀</div>
               <div class="task-div">Conquer React⚛️</div>
@@ -63,29 +64,54 @@
               <div class="task-div">Crush Frameworks🖼️</div>
             </div>
           </div>
-          <!-- DOING Column -->
-          <div class="column-div" data-status="doing">
+          <!-- In Progress Column -->
+          <div class="column-div" data-status="in-progress">
             <div id="doing-head-div" class="column-head-div">
               <span class="dot" id="doing-dot"></span>
-              <h4 id="doingText" class="columnHeader">DOING (2)</h4>
+              <h4 id="doingText" class="columnHeader">In Progress (2)</h4>
             </div>
-            <!-- Tasks container for DOING -->
+            <!-- Tasks container for In Progress -->
             <div class="tasks-container">
               <div class="task-div">Master JavaScript 💛</div>
               <div class="task-div">Never Give Up 🏆</div>
             </div>
           </div>
-          <!-- DONE Column -->
+          <!-- Done Column -->
           <div class="column-div" data-status="done">
             <div id="done-head-div" class="column-head-div">
               <span class="dot" id="done-dot"></span>
-              <h4 id="doneText" class="columnHeader">DONE (2)</h4>
+              <h4 id="doneText" class="columnHeader">Done (2)</h4>
             </div>
-            <!-- Tasks container for DONE -->
+            <!-- Tasks container for Done -->
             <div class="tasks-container">
               <div class="task-div">Explore ES6 Features 🚀</div>
               <div class="task-div">Have fun 🥳</div>
             </div>
+            <dialog id="task-modal">
+              <form method="dialog" id="task-form">
+                <div class="modal-header">
+                  <h3>Task</h3>
+                  <button type="button" class="close-btn" id="close-modal-btn">
+                    &times;
+                  </button>
+                </div>
+
+                <label for="task-title">Title</label>
+                <input type="text" id="task-title" name="title" required />
+
+                <label for="task-desc">Description</label>
+                <textarea id="task-desc" name="description" rows="4"></textarea>
+
+                <label for="task-status">Status</label>
+                <select id="task-status" name="status" required>
+                  <option value="to-do">To Do</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="done">Done</option>
+                </select>
+
+                <button type="button" id="save-task-btn">Save Changes</button>
+              </form>
+            </dialog>
           </div>
         </main>
       </div>
