@@ -7,8 +7,17 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.svg" />
+    <script type="module" src="./scripts.js"></script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon.svg"
+    />
+
     <title>Kanban Task Management</title>
   </head>
 
@@ -18,6 +27,7 @@
       <div id="side-logo-div">
         <img id="logo" src="./assets/logo-light.svg" alt="logo-light" />
       </div>
+
       <div class="boards-nav-links-div" id="boards-nav-links-div">
         <h4 id="headline-sidepanel">ALL BOARDS (1)</h4>
         <button class="board-btn">Launch Career</button>
@@ -28,85 +38,84 @@
     <div id="layout">
       <header id="header" class="sticky-header">
         <div class="header-name-div">
-          <img src="./assets/favicon.svg" alt="logo-mobile" class="logo-mobile" />
-          <h2 class="header-board-name" id="header-board-name">Launch Career</h2>
+          <img
+            src="./assets/favicon.svg"
+            alt="logo-mobile"
+            class="logo-mobile"
+          />
+          <h2 class="header-board-name" id="header-board-name">
+            Launch Career
+          </h2>
         </div>
       </header>
 
       <div class="container">
         <main class="card-column-main">
-          <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
-          <div class="column-div" data-status="todo">
+          <!-- Task Columns: Display tasks grouped by status (To Do, In Progress, Done). -->
+          <div class="column-div" data-status="to-do">
             <div id="todo-head-div" class="column-head-div">
               <span class="dot" id="todo-dot"></span>
-              <h4 id="toDoText" class="columnHeader">TODO (0)</h4>
+              <h4 id="toDoText" class="columnHeader">To Do (4)</h4>
             </div>
-            <!-- Tasks container for TODO -->
-            <div class="tasks-container" id="todo-tasks"></div>
+            <!-- Tasks container for To Do -->
+            <div class="tasks-container">
+              <div class="task-div">Launch Epic Career 🚀</div>
+              <div class="task-div">Conquer React⚛️</div>
+              <div class="task-div">Understand Databases⚙️</div>
+              <div class="task-div">Crush Frameworks🖼️</div>
+            </div>
           </div>
-
-          <!-- DOING Column -->
-          <div class="column-div" data-status="doing">
+          <!-- In Progress Column -->
+          <div class="column-div" data-status="in-progress">
             <div id="doing-head-div" class="column-head-div">
               <span class="dot" id="doing-dot"></span>
-              <h4 id="doingText" class="columnHeader">DOING (0)</h4>
+              <h4 id="doingText" class="columnHeader">In Progress (2)</h4>
             </div>
-            <!-- Tasks container for DOING -->
-            <div class="tasks-container" id="doing-tasks"></div>
+            <!-- Tasks container for In Progress -->
+            <div class="tasks-container">
+              <div class="task-div">Master JavaScript 💛</div>
+              <div class="task-div">Never Give Up 🏆</div>
+            </div>
           </div>
-
-          <!-- DONE Column -->
+          <!-- Done Column -->
           <div class="column-div" data-status="done">
             <div id="done-head-div" class="column-head-div">
               <span class="dot" id="done-dot"></span>
-              <h4 id="doneText" class="columnHeader">DONE (0)</h4>
+              <h4 id="doneText" class="columnHeader">Done (2)</h4>
             </div>
-            <!-- Tasks container for DONE -->
-            <div class="tasks-container" id="done-tasks"></div>
+            <!-- Tasks container for Done -->
+            <div class="tasks-container">
+              <div class="task-div">Explore ES6 Features 🚀</div>
+              <div class="task-div">Have fun 🥳</div>
+            </div>
+            <dialog id="task-modal">
+              <form method="dialog" id="task-form">
+                <div class="modal-header">
+                  <h3>Task</h3>
+                  <button type="button" class="close-btn" id="close-modal-btn">
+                    &times;
+                  </button>
+                </div>
+
+                <label for="task-title">Title</label>
+                <input type="text" id="task-title" name="title" required />
+
+                <label for="task-desc">Description</label>
+                <textarea id="task-desc" name="description" rows="4"></textarea>
+
+                <label for="task-status">Status</label>
+                <select id="task-status" name="status" required>
+                  <option value="to-do">To Do</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="done">Done</option>
+                </select>
+
+                <button type="button" id="save-task-btn">Save Changes</button>
+              </form>
+            </dialog>
           </div>
         </main>
       </div>
     </div>
-
-    <!-- Task Detail Modal -->
-    <div
-      class="modal-backdrop"
-      id="modal-backdrop"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-title"
-      hidden
-    >
-      <div class="modal">
-        <h3 class="modal-title" id="modal-title">Task Details</h3>
-
-        <div class="modal-field">
-          <label for="modal-task-title">Title</label>
-          <input type="text" id="modal-task-title" placeholder="Task title" />
-        </div>
-
-        <div class="modal-field">
-          <label for="modal-task-desc">Description</label>
-          <textarea id="modal-task-desc" rows="4" placeholder="Task description"></textarea>
-        </div>
-
-        <div class="modal-field">
-          <label for="modal-task-status">Current Status</label>
-          <select id="modal-task-status">
-            <option value="todo">Todo</option>
-            <option value="doing">Doing</option>
-            <option value="done">Done</option>
-          </select>
-        </div>
-
-        <div class="modal-actions">
-          <button class="btn-save" id="modal-save-btn">Save Changes</button>
-          <button class="btn-close" id="modal-close-btn">Close</button>
-        </div>
-      </div>
-    </div>
-
-    <script src="./initialData.js"></script>
-    <script src="./scripts.js"></script>
   </body>
 </html>

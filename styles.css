@@ -203,126 +203,12 @@ header {
   font-weight: bold;
 }
 
-.task-div:hover {
-  color: #635fc7;
-}
-
 /* ===============
    Headings
 ================ */
 h2 {
   font-size: 1.5rem;
   margin: 0;
-}
-
-/* ========================
-   Modal
-======================== */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  padding: 16px;
-}
-
-.modal-backdrop[hidden] {
-  display: none;
-}
-
-.modal {
-  background-color: var(--primary-color);
-  border-radius: 6px;
-  padding: 32px;
-  width: 100%;
-  max-width: 480px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  box-shadow: 0 10px 40px rgba(54, 78, 126, 0.25);
-}
-
-.modal-title {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--primary-font-color);
-  margin: 0;
-}
-
-.modal-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.modal-field label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--secondary-font-color);
-  letter-spacing: 0.04em;
-}
-
-.modal-field input,
-.modal-field textarea,
-.modal-field select {
-  font-family: inherit;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--primary-font-color);
-  background-color: transparent;
-  border: 1px solid rgba(130, 143, 163, 0.25);
-  border-radius: 4px;
-  padding: 8px 16px;
-  outline: none;
-  resize: none;
-  width: 100%;
-  transition: border-color 0.15s ease;
-}
-
-.modal-field input:focus,
-.modal-field textarea:focus,
-.modal-field select:focus {
-  border-color: #635fc7;
-}
-
-.modal-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.btn-save,
-.btn-close {
-  font-family: inherit;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 20px;
-  height: 40px;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.15s ease;
-}
-
-.btn-save {
-  background-color: #635fc7;
-  color: #fff;
-}
-
-.btn-save:hover {
-  background-color: #a8a4ff;
-}
-
-.btn-close {
-  background-color: rgba(99, 95, 199, 0.1);
-  color: #635fc7;
-}
-
-.btn-close:hover {
-  background-color: rgba(99, 95, 199, 0.2);
 }
 
 /* ========================
@@ -418,8 +304,75 @@ h2 {
   .column-div {
     padding: 24px;
   }
+}
 
-  .modal {
-    padding: 24px 20px;
+/* ===============
+   Modal Styles
+================ */
+dialog#task-modal {
+  border: none;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+button#save-task-btn {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: #635fc7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button#save-task-btn:hover {
+  background: #4a3fb1;
+}
+
+/* Responsive modal */
+@media screen and (max-width: 768px) {
+  dialog#task-modal {
+    width: 95vw;
+    padding: 16px;
   }
 }
